@@ -15,22 +15,18 @@ import { Router } from "@angular/router";
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  hide = true;
-  email: string = "";
-  password: string = "";
-  loginSuccess: boolean = false;
+  public hide = true;
+  public email: string = "";
+  public password: string = "";
+  public loginSuccess: boolean = false;
 
   constructor(private dataRequest: DataRequestService, private authService: AuthService, private router: Router) {}
 
   async loginUser() {
-    console.log("User wird eingeloggt")
     var users = this.dataRequest.getUsers();
     (await users).subscribe(allUsers => {
-      console.log(allUsers);
-      console.log(typeof allUsers);
       allUsers.forEach(user => {
 
-        console.log(user);
         if(user.email == this.email) {
           if(user.password == this.password) {
               this.loginSuccess = true;

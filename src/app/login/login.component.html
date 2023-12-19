@@ -10,11 +10,11 @@
   <mat-card-content>
     <mat-form-field>
       <mat-label>E-Mail</mat-label>
-      <input matInput [(ngModel)]="email">
+      <input matInput [(ngModel)]="email" id="email">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Passwort</mat-label>
-      <input [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'">
+      <input [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'" id="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
@@ -22,6 +22,6 @@
 
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-raised-button (click)="loginUser()">Login</button>
+    <button mat-raised-button (click)="loginUser()" id="loginUser">Login</button>
   </mat-card-actions>
 </mat-card>

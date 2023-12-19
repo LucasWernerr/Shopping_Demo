@@ -11,7 +11,7 @@ describe('ShoppingCardComponent', () => {
       declarations: [ShoppingCardComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ShoppingCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,9 @@ describe('ShoppingCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+describe('My First Test', () => {
+  it('Does not do much!', () => {
+    expect(true).to.equal(true)
+  })
+})

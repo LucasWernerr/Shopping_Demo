@@ -52,8 +52,6 @@ export class DataStorageService {
     var product: any= null;
 
     this.shoppingCard.forEach((productShoppingCard: any) => {
-      console.log(productShoppingCard)
-      console.log(productShoppingCard.productDetail.id + " - " + productId)
       if(productShoppingCard.productDetail.id == productId) {
         product = productShoppingCard;
       }

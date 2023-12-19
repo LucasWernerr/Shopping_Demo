@@ -19,19 +19,12 @@ export interface Tile {
 })
 export class MainComponent {
 
-  products: any = [];
-  productsLoaded: boolean = false;
+  public products: any = [];
+  public productsLoaded: boolean = false;
   public categories: any = ["None"];
   public selectedCategory: any = "";
 
-
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-  ];
-
   constructor(private dataRequestService: DataRequestService, private router: Router, private dataStorage: DataStorageService) {
-    console.log(this.dataStorage.selectedCategory);
     if(this.dataStorage.selectedCategory !== "") {
       this.selectedCategory = this.dataStorage.selectedCategory;
     }
