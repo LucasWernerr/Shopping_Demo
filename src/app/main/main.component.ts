@@ -21,6 +21,9 @@ export class MainComponent {
 
   products: any = [];
   productsLoaded: boolean = false;
+  public categories: any = ["None"];
+  public selectedCategory: any = "";
+
 
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -28,14 +31,33 @@ export class MainComponent {
   ];
 
   constructor(private dataRequestService: DataRequestService, private router: Router, private dataStorage: DataStorageService) {
+    console.log(this.dataStorage.selectedCategory);
+    if(this.dataStorage.selectedCategory !== "") {
+      this.selectedCategory = this.dataStorage.selectedCategory;
+    }
+
     this.loadProducts();
   }
 
   async loadProducts() {
-
+    this.productsLoaded = false;
+    this.products = [];
     (await this.dataRequestService.loadProducts()).subscribe(allProducts => {
       allProducts.forEach(product => {
-        this.products.push(product);
+
+        if(this.selectedCategory == "None" || this.selectedCategory == "") {
+          this.products.push(product);
+        }else {
+          if(this.selectedCategory == product.category) {
+            this.products.push(product);
+          }
+        }
+
+
+
+        if(this.categories.indexOf(product.category) == -1) {
+          this.categories.push(product.category)
+        }
       })
 
       this.productsLoaded = true;
@@ -44,14 +66,17 @@ export class MainComponent {
   }
 
   addProductToShoppingCard(product: any) {
-    console.log("Zu Einkaufswagen hinzufügen")
     this.dataStorage.addToShoppingCard(product);
 
   }
 
   openDetailPage(productId: string) {
-    console.log("HIER")
-    console.log(productId)
     this.router.navigate(["/productDetail", productId])
+  }
+
+  filterProducts(selectedCategory: any) {
+    this.selectedCategory = selectedCategory;
+    this.dataStorage.selectedCategory = selectedCategory;
+    this.loadProducts();
   }
 }

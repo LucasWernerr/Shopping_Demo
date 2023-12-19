@@ -1,10 +1,17 @@
 <app-header></app-header>
 
+<div style="padding-left: 5%;">
+
+
+
+</div>
 
 <div style="display: flex;">
 
   <div style="width: 80%;">
 
+
+    
 
 
     <div *ngIf="!productsLoaded">
@@ -13,16 +20,27 @@
     </div>
 
     <div *ngIf="productsLoaded">
-
+      <div style="margin-left: 5%;">
+        <h2>Filter:</h2>
+        <mat-form-field>
+          <mat-label>Produktkategorie</mat-label>
+          <mat-select [(value)]="selectedCategory" (selectionChange)="filterProducts($event.value)">
+            @for (cagtegory of categories; track cagtegory) {
+              <mat-option [value]="cagtegory">{{cagtegory}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+        
       <div class="cards">
 
         @for (product of products; track product.id) {
           <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title class="titleCard">{{ product.title }}</mat-card-title>
               <mat-card-subtitle class="titlePrice">{{ product.price }} €</mat-card-subtitle>
+              <mat-card-title class="titleCard">{{ product.title }}</mat-card-title>
             </mat-card-header>
-            <div style="height: 400px;">
+            <div style="height: 400px;display: flex;">
               <img class="productImage" mat-card-image src="{{ product.image }}">
             </div>
             <mat-card-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataRequestService } from '../services/data-request.service';
+import { DataStorageService } from '../services/data-storage.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,7 @@ export class ProductDetailComponent {
   public productLoaded: boolean = false;
   public product: any = null;
 
-  constructor(private route: ActivatedRoute, private dataRequestService: DataRequestService) {
+  constructor(private route: ActivatedRoute, private dataRequestService: DataRequestService, private dataStorage: DataStorageService) {
     this.productId = this.route.snapshot.paramMap.get('id');
     this.loadProduct();
   }
@@ -29,6 +30,11 @@ export class ProductDetailComponent {
 
       this.productLoaded = true;
     })
+
+  }
+
+  addProductToShoppingCard(product: any) {
+    this.dataStorage.addToShoppingCard(product);
 
   }
 }

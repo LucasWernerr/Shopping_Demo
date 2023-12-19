@@ -14,12 +14,10 @@ export class ShoppingCardComponent {
 
 
   constructor(private dataStorage: DataStorageService) {
-
+    this.shoppingCard = dataStorage.shoppingCard;
     this._shoppingCardSubscription = dataStorage.shoppingCardChange.subscribe((value) => {
-      console.log("ÄNDERUNG")
       this.shoppingCard = value;
-      console.log(this.shoppingCard)
-  })
+    })
   }
 
   removeOne(product: any) {

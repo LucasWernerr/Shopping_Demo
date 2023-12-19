@@ -8,19 +8,15 @@ export class DataStorageService {
 
   public shoppingCard: any = [];
   public shoppingCardChange: Subject<boolean> = new Subject<boolean>();
-
+  public selectedCategory: any = "";
 
   constructor() {}
 
 
   addToShoppingCard(product: any) {
 
-    console.log("HIEr 1")
-
     var productFromList = this.getProductFromList(product.id);
-    console.log("productFromList")
 
-    console.log(productFromList)
     if(productFromList == null) {
 
       var productToAdd = {
@@ -33,32 +29,22 @@ export class DataStorageService {
       productFromList.counter++;
     }
     this.shoppingCardChange.next(this.shoppingCard);
-
-    console.log("HIEr 2")
   }
 
   removeFromShoppingCard(product: any) {
 
-    console.log("HIEr 1")
 
     var productFromList = this.getProductFromList(product.id);
-    console.log("productFromList")
+    if(productFromList.counter == 1) {
 
-    console.log(productFromList)
-    if(productFromList == null) {
-
-      var productToAdd = {
-        counter: 1,
-        productDetail: product
+      const index = this.shoppingCard.indexOf(productFromList, 0);
+      if (index > -1) {
+        this.shoppingCard.splice(index, 1);
       }
-
-      this.shoppingCard.push(productToAdd)
     }else {
       productFromList.counter--;
     }
     this.shoppingCardChange.next(this.shoppingCard);
-
-    console.log("HIEr 2")
   }
 
   getProductFromList(productId: string) {

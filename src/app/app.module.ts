@@ -22,6 +22,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatProgressSpinnerModule,
     MatButtonModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
