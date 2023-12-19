@@ -18,4 +18,10 @@ export class DataRequestService {
     return this.http.get<any[]>(this.urlUser);
   }
 
+  async loadProducts() {
+
+    var users = null;
+    return this.http.get<any[]>(this.urlProducts);
+  }
+
 }

@@ -14,3 +14,11 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
+
+.example-card {
+  max-width: 400px;
+  max-height: 800px;
+  margin-left: 40%;
+  background-color: lightgray;
+  margin-top: 100px;
+}

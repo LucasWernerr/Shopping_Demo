@@ -1,2 +1,53 @@
 <app-header></app-header>
-Sind drin
+
+
+<div style="display: flex;">
+
+  <div style="width: 80%;">
+
+
+
+    <div *ngIf="!productsLoaded">
+      <mat-spinner></mat-spinner>
+
+    </div>
+
+    <div *ngIf="productsLoaded">
+
+      <div class="cards">
+
+        @for (product of products; track product.id) {
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title class="titleCard">{{ product.title }}</mat-card-title>
+              <mat-card-subtitle class="titlePrice">{{ product.price }} €</mat-card-subtitle>
+            </mat-card-header>
+            <div style="height: 400px;">
+              <img class="productImage" mat-card-image src="{{ product.image }}">
+            </div>
+            <mat-card-content>
+              <p class="titleDescription">
+                {{ product.description }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button class="button" mat-raised-button (click)="openDetailPage(product.id)">Detail</button>
+              <button class="button buttonCard" mat-raised-button (click)="addProductToShoppingCard(product)">In den Einkaufswagen</button>
+            </mat-card-actions>
+          </mat-card>
+        } @empty {
+      Empty list of users
+    }
+  </div>
+</div>
+
+
+
+
+</div>
+
+<div class="shoppingCardDiv" style="width: 20%;">
+    <app-shopping-card></app-shopping-card>
+</div>
+
+</div>

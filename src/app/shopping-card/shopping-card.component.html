@@ -1,0 +1,9 @@
+<p>Warenkorb</p>
+@for (product of shoppingCard; track product.id) {
+  Titel: {{product.productDetail.title}}<br/>
+  Anzahl: {{product.counter}}
+  <button mat-raised-button (click)="removeOne(product.productDetail)">-</button>
+  <button mat-raised-button (click)="addOne(product.productDetail)">+</button>
+
+  <mat-divider></mat-divider>
+}

@@ -13,7 +13,7 @@ export const authguardGuard: CanActivateFn = (route, state) => {
 
   console.log(route)
   console.log(authService.isLoggedIn)
-  if(route.url[0].path == "main"){
+  if(route.url[0].path == "main" || route.url[0].path == "productDetail"){
       if(authService.isLoggedIn == true) {
         return true;
       }else {

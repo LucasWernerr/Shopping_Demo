@@ -15,13 +15,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from  '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductDetailComponent,
+    ShoppingCardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,12 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

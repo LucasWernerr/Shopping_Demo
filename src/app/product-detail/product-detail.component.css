@@ -22,12 +22,13 @@
   height: 200px;
 }
 
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
   padding: auto;
 }
 
@@ -49,9 +50,4 @@
 
 .button {
   color: darkgray
-}
-
-
-.shoppingCardDiv {
-  border-left: 1px solid black;
 }
