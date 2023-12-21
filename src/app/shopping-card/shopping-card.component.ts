@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class ShoppingCardComponent {
 
+  //Variablen-Definition
   public shoppingCard: any = [];
   public _shoppingCardSubscription: any;
 
@@ -20,11 +21,19 @@ export class ShoppingCardComponent {
     })
   }
 
+  /**
+   * Reduziert die Anzahl der Produkte im Warenkorb
+   * @param product 
+   */
   removeOne(product: any) {
     this.dataStorage.removeFromShoppingCard(product);
   }
 
 
+  /**
+   * Zählt die Anzahl der Produkte im Warenkorb hoch
+   * @param product 
+   */
   addOne(product: any) {
     this.dataStorage.addToShoppingCard(product);
   }

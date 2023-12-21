@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  public displayLogout: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {
+    if(this.authService.isLoggedIn) {
+      this.displayLogout = true;
+    }
+  }
+
+
+  /**
+   * Benutzer ausloggen
+   */
+  logout() {
+    this.authService.isLoggedIn = false;
+    this.router.navigate(["/login"])
+  }
 }

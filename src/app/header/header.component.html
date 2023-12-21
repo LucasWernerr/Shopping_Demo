@@ -2,7 +2,8 @@
   <mat-toolbar-row>
     <span>Shopping-Demo</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button *ngIf="displayLogout" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="logout()">
+      <mat-icon >logout</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -7,12 +7,9 @@ import { inject } from '@angular/core';
 export const authguardGuard: CanActivateFn = (route, state) => {
 
   const authService = inject(AuthService);
-
-
   var router = new Router;
 
-  console.log(route)
-  console.log(authService.isLoggedIn)
+  //Prüfung der Routen
   if(route.url[0].path == "main" || route.url[0].path == "productDetail"){
       if(authService.isLoggedIn == true) {
         return true;

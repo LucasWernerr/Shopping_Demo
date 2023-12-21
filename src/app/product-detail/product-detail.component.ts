@@ -10,6 +10,7 @@ import { DataStorageService } from '../services/data-storage.service';
 })
 export class ProductDetailComponent {
 
+  //Variablen-Definition
   public productId: string | null = null;
   public productLoaded: boolean = false;
   public product: any = null;
@@ -19,22 +20,25 @@ export class ProductDetailComponent {
     this.loadProduct();
   }
 
+  /**
+   * Funktion lädt die Produkte und ermittelt die Produktdetails
+   */
   async loadProduct() {
-
     (await this.dataRequestService.loadProducts()).subscribe(allProducts => {
       allProducts.forEach(product => {
         if(product.id == this.productId) {
           this.product = product;
         }
       })
-
       this.productLoaded = true;
     })
-
   }
 
+  /**
+   * Funktion fügt ein Produkt zum Warenkorb hinzu
+   * @param product : any - Produkt, welches als Objekt übergeben wird
+   */
   addProductToShoppingCard(product: any) {
     this.dataStorage.addToShoppingCard(product);
-
   }
 }

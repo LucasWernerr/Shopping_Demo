@@ -19,6 +19,7 @@ export interface Tile {
 })
 export class MainComponent {
 
+  //Variablen-Definition
   public products: any = [];
   public productsLoaded: boolean = false;
   public categories: any = ["None"];
@@ -28,10 +29,12 @@ export class MainComponent {
     if(this.dataStorage.selectedCategory !== "") {
       this.selectedCategory = this.dataStorage.selectedCategory;
     }
-
     this.loadProducts();
   }
 
+  /**
+   * Laden der Produkte
+   */
   async loadProducts() {
     this.productsLoaded = false;
     this.products = [];
@@ -45,29 +48,35 @@ export class MainComponent {
             this.products.push(product);
           }
         }
-
-
-
         if(this.categories.indexOf(product.category) == -1) {
           this.categories.push(product.category)
         }
       })
-
       this.productsLoaded = true;
     })
-
   }
 
+  /**
+   * Funktion fügt ein Produkt zum Warenkorb hinzu
+   * @param product : any - Produkt, welches als Objekt übergeben wird
+   */
   addProductToShoppingCard(product: any) {
     this.dataStorage.addToShoppingCard(product);
-
   }
 
+  /**
+   * Funktion entfernt ein Produkt aus dem Warenkorb
+   * @param product : any - Produkt, welches als Objekt übergeben wird
+   */
   openDetailPage(productId: string) {
     this.router.navigate(["/productDetail", productId])
   }
 
-  filterProducts(selectedCategory: any) {
+  /**
+   * Funktion setzt den Filter für die Produkte bei der Anzeige
+   * @param selectedCategory : String - Kategorie wird als Filter für die Produkte gesetzt
+   */
+  filterProducts(selectedCategory: String) {
     this.selectedCategory = selectedCategory;
     this.dataStorage.selectedCategory = selectedCategory;
     this.loadProducts();

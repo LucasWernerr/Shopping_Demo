@@ -12,7 +12,10 @@ export class DataStorageService {
 
   constructor() {}
 
-
+  /**
+   * Fügt Produkt zu Warenkorb hinzu
+   * @param product 
+   */
   addToShoppingCard(product: any) {
 
     var productFromList = this.getProductFromList(product.id);
@@ -31,9 +34,11 @@ export class DataStorageService {
     this.shoppingCardChange.next(this.shoppingCard);
   }
 
+  /**
+   * Entfernt Produkt aus Warenkorb
+   * @param product 
+   */
   removeFromShoppingCard(product: any) {
-
-
     var productFromList = this.getProductFromList(product.id);
     if(productFromList.counter == 1) {
 
@@ -47,6 +52,11 @@ export class DataStorageService {
     this.shoppingCardChange.next(this.shoppingCard);
   }
 
+  /**
+   * Ermittelt das Objekt zu der übergebenen Produkt-Id 
+   * @param productId : string - ProduktId
+   * @returns 
+   */
   getProductFromList(productId: string) {
 
     var product: any= null;

@@ -22,9 +22,9 @@ export class LoginComponent {
 
   constructor(private dataRequest: DataRequestService, private authService: AuthService, private router: Router) {}
 
-  async loginUser() {
+  loginUser() {
     var users = this.dataRequest.getUsers();
-    (await users).subscribe(allUsers => {
+    users.subscribe(allUsers => {
       allUsers.forEach(user => {
 
         if(user.email == this.email) {
